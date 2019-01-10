@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019
 {
-    class Entity
+    public class Rockford : Entity
     {
+        public Rockford(ref Tile tile) : base(ref tile)
+        {
+
+        }
     }
 }

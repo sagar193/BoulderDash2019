@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019
 {
-    class Tile
+    public class Tile
     {
+        public Entity Entity_ { get; internal set; }
+        public Dictionary<DirectionEnum, Tile> neighbours;
+
+        public Tile()
+        {
+            neighbours = new Dictionary<DirectionEnum, Tile>();
+        }
+
+        public Tile(ref Entity entity)
+        {
+            Entity_ = entity;
+        }
+
+        internal void SetNeighbour(DirectionEnum direction, Tile tile)
+        {
+            neighbours.Add(direction, tile);
+        }
     }
 }

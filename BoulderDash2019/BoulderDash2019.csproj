@@ -43,7 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity.cs" />
+    <Compile Include="Enums\DirectionEnum.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\Boulder.cs" />
+    <Compile Include="Models\Diamond.cs" />
+    <Compile Include="Enums\EntityTypesEnum.cs" />
+    <Compile Include="Models\Exit.cs" />
+    <Compile Include="Models\FireFly.cs" />
+    <Compile Include="Models\Mud.cs" />
+    <Compile Include="Models\Rockford.cs" />
+    <Compile Include="Models\SteelWall.cs" />
+    <Compile Include="Models\Wall.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="LevelData.cs" />
