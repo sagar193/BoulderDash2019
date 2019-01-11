@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoulderDash2019.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,15 +19,23 @@ namespace BoulderDash2019
             OutputCMD.Draw('▒');
         }
 
-        internal override bool MoveOn(DirectionEnum directionEnum, int force)
+        internal override bool MoveOn(DirectionEnum directionEnum, ForceEnum force)
         {
-            if (force > 1)
+            switch (force)
             {
-                tile_ = null;
-                return true;
+                case ForceEnum.FireflyPush:
+                    return false;
+                case ForceEnum.PlayerPush:
+                    tile_ = null;
+                    return true;
+                case ForceEnum.Gravity:
+                    return false;
+                case ForceEnum.Explosion:
+                    tile_ = null;
+                    return true;
+                default:
+                    return false;
             }
-            else
-                return false;
         }
 
         internal override void Update(int frameUpdate)

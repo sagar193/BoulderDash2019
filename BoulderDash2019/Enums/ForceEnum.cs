@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019.Enums
 {
-    public enum forceEnum
+    public enum ForceEnum
     {
         FireflyPush,
         PlayerPush,

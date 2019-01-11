@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoulderDash2019.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,7 +23,7 @@ namespace BoulderDash2019
 
         abstract internal void Update(int frameUpdate);
 
-        abstract internal bool MoveOn(DirectionEnum directionEnum, int force);
+        abstract internal bool MoveOn(DirectionEnum directionEnum, ForceEnum force);
         
     }
 }

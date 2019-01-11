@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoulderDash2019.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace BoulderDash2019
             neighbours.Add(direction, tile);
         }
 
-        internal Tile MoveToNeighbour(DirectionEnum direction, Entity entity, int force)
+        internal Tile MoveToNeighbour(DirectionEnum direction, Entity entity, ForceEnum force)
         {
             Tile successTile = neighbours[direction].MoveOn(direction, entity, force);
             if (successTile != null)
@@ -37,7 +38,7 @@ namespace BoulderDash2019
             else return null;
         }
 
-        internal Tile MoveOn(DirectionEnum direction, Entity entity, int force)
+        internal Tile MoveOn(DirectionEnum direction, Entity entity, ForceEnum force)
         {
             if (Entity_ == null)
             {

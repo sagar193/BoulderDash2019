@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoulderDash2019.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace BoulderDash2019
             OutputCMD.Draw('B');
         }
 
-        internal override bool MoveOn(DirectionEnum directionEnum, int force)
+        internal override bool MoveOn(DirectionEnum directionEnum, ForceEnum force)
         {
 
             throw new NotImplementedException();
