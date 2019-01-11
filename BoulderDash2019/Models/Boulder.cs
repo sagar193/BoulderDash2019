@@ -28,9 +28,6 @@ namespace BoulderDash2019
                         return false;
                     else
                         return move(directionEnum);
-                case ForceEnum.Explosion:
-                    tile_ = null;
-                    return true;
                 default:
                     return false;
             }

@@ -11,10 +11,12 @@ namespace BoulderDash2019
     {
         public Entity Entity_ { get; internal set; }
         public Dictionary<DirectionEnum, Tile> neighbours;
+        int explosionCounter;
 
         public Tile()
         {
             neighbours = new Dictionary<DirectionEnum, Tile>();
+            explosionCounter = 0;
         }
 
         public Tile(ref Entity entity)
@@ -29,6 +31,7 @@ namespace BoulderDash2019
 
         internal void Explode(int v)
         {
+            explosionCounter = 4;
             if (v > 0)
             {
                 foreach (var neighbour in neighbours)
@@ -37,7 +40,11 @@ namespace BoulderDash2019
                 }
             }
             if (Entity_ != null)
-                Entity_.Explode();
+            {
+                bool destroyed = Entity_.Explode();
+                if (destroyed)
+                    Entity_ = null;
+            }
 
         }
 
@@ -73,11 +80,25 @@ namespace BoulderDash2019
 
         internal void Update(int frameUpdate)
         {
-            Entity_.Update(frameUpdate);
+            if (explosionCounter > 0)
+            {
+                explosionCounter--;
+                if (Entity_ != null)
+                    Entity_.Explode();
+            }
+            if(Entity_ != null)
+            {
+                Entity_.Update(frameUpdate);
+            }
         }
 
         internal void Draw()
         {
+            if (explosionCounter > 0)
+            {
+                OutputCMD.Draw('O');
+                return;
+            }
             if (Entity_ == null)
                 OutputCMD.Draw(' ');
             else

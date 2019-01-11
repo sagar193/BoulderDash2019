@@ -29,6 +29,8 @@ namespace BoulderDash2019
 
         internal void Move(DirectionEnum direction)
         {
+            if (tile_ == null)
+                return;
             Tile newPosition = tile_.MoveToNeighbour(direction, this, ForceEnum.PlayerPush);
             if (newPosition != null)
             {
@@ -38,18 +40,38 @@ namespace BoulderDash2019
 
         internal override bool MoveOn(DirectionEnum directionEnum, ForceEnum force)
         {
-            throw new NotImplementedException();
+            switch (force)
+            {
+                case ForceEnum.FireflyPush:
+                    alive = false;
+                    tile_.Explode(2);
+                    tile_ = null;
+                    return true;
+                case ForceEnum.Gravity:
+                    alive = false;
+                    tile_.Explode(2);
+                    tile_ = null;
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         internal void addScore(int addScore)
         {
             score += addScore;
         }
+
         internal override bool Explode()
         {
-            tile_ = null;
+            //tile_ = null;
             alive = false;
-            return true;
+            return false;
+        }
+
+        internal void Explode(int v)
+        {
+            tile_.Explode(1);
         }
     }
 }

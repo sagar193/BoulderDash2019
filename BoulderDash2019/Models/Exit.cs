@@ -9,9 +9,10 @@ namespace BoulderDash2019
 {
     public class Exit : Entity
     {
+        bool open { get; set; }
         public Exit(ref Tile tile) : base (ref tile)
         {
-
+            open = false;
         }
 
         internal override void Draw()
@@ -21,7 +22,16 @@ namespace BoulderDash2019
 
         internal override bool MoveOn(DirectionEnum directionEnum, ForceEnum force)
         {
-            throw new NotImplementedException();
+            switch (force)
+            {
+                case ForceEnum.PlayerPush:
+                    if (open == false)
+                        return false;
+                    tile_ = null;
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         internal override void Update(int frameUpdate)

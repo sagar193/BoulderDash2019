@@ -66,6 +66,9 @@ namespace BoulderDash2019
                     case ConsoleKey.DownArrow:
                         player.Move(DirectionEnum.Down);
                         break;
+                    case ConsoleKey.E:
+                        player.Explode(2);
+                        break;
                     default:
 
                         break;
