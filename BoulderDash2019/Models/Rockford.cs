@@ -12,5 +12,20 @@ namespace BoulderDash2019
         {
 
         }
+
+        internal override void Draw()
+        {
+            OutputCMD.Draw('R');
+        }
+
+        internal override void Update(int frameUpdate)
+        {
+            
+        }
+
+        internal void Move(DirectionEnum direction)
+        {
+            //tile_.Move()
+        }
     }
 }

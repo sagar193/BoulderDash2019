@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace BoulderDash2019
 {
     class Game
     {
         Level[] levels;
-        static void Main(string[] args)
-        {
-            Console.WriteLine("test");
-
-            Game game = new Game();
-            Console.ReadKey();
-        }
+        int currentLevel;
+        bool playing;
+        Rockford player;
 
         public Game()
         {
@@ -24,6 +21,46 @@ namespace BoulderDash2019
             levels[0] = mapLoader.createLevel(LevelData.Level1);
             levels[1] = mapLoader.createLevel(LevelData.Level2);
             levels[2] = mapLoader.createLevel(LevelData.Level3);
+
+            currentLevel = 0;
+            playing = true;
+            player = new Rockford(ref levels[currentLevel].playerPosition.tile_);
         }
+
+        public void startGame()
+        {
+            Thread draw = new Thread(new ThreadStart(drawGame));
+            draw.Start();
+
+            play();
+        }
+
+        public void play()
+        {
+            while (playing)
+            {
+                var key = Console.ReadKey();
+                switch (key.Key)
+                {
+                    case ConsoleKey.LeftArrow:
+                        break;
+                    default:
+
+                        break;
+                }
+            }
+        }
+
+        public void drawGame()
+        {
+            while (playing)
+            {
+                OutputCMD.ClearScreen();
+                levels[currentLevel].Draw();
+                Thread.Sleep(300);
+            }
+        }
+
+
     }
 }

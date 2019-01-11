@@ -24,11 +24,11 @@ namespace BoulderDash2019
                 }
             }
 
-            connectTiles(level);
+            connectTiles(ref level);
             return level;
         }
 
-        private void connectTiles(Level level)
+        private void connectTiles(ref Level level)
         {
             var y1= level.Tiles.GetLength(1);
             var x1 = level.Tiles.GetLength(0);
@@ -37,13 +37,13 @@ namespace BoulderDash2019
                 for (int x = 0; x < level.Tiles.GetLength(0); x++)
                 {
                     if (x > 0)
-                        level.Tiles[x, y].SetNeighbour(DirectionEnum.Left, level.Tiles[x -1 , y]);
+                        level.Tiles[x, y].SetNeighbour(DirectionEnum.Left, ref level.Tiles[x -1 , y]);
                     if (y > 0)
-                        level.Tiles[x, y].SetNeighbour(DirectionEnum.Up, level.Tiles[x, y-1]);
+                        level.Tiles[x, y].SetNeighbour(DirectionEnum.Up, ref level.Tiles[x, y-1]);
                     if (x < level.Tiles.GetLength(0)-1)
-                        level.Tiles[x, y].SetNeighbour(DirectionEnum.Right, level.Tiles[x + 1, y]);
+                        level.Tiles[x, y].SetNeighbour(DirectionEnum.Right, ref level.Tiles[x + 1, y]);
                     if (y < level.Tiles.GetLength(1)-1)
-                        level.Tiles[x, y].SetNeighbour(DirectionEnum.Down, level.Tiles[x, y + 1]);
+                        level.Tiles[x, y].SetNeighbour(DirectionEnum.Down, ref level.Tiles[x, y + 1]);
                 }
             }
         }
@@ -55,13 +55,13 @@ namespace BoulderDash2019
             {
                 case 'R':
                     Rockford rockford = new Rockford(ref tile);
+                    level.playerPosition = rockford;
                     break;
                 case 'B':
                     Boulder boulder = new Boulder(ref tile);
                     break;
                 case 'D':
                     Diamond diamond = new Diamond(ref tile);
-                    level.addDiamondCount();
                     break;
                 case 'F':
                     FireFly fireFly = new FireFly(ref tile);

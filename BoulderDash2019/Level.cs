@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace BoulderDash2019
@@ -9,12 +10,12 @@ namespace BoulderDash2019
     public class Level
     {
         internal Tile[,] Tiles { get; set; }
-        int diamonds_;
         Exit exit_;
+        internal Rockford playerPosition { get; set; }
+
         public Level(int width, int height)
         {
             Tiles = new Tile[width, height];
-            diamonds_ = 0;
         }
 
         public void addTile(int xIndex, int yIndex, Tile tile)
@@ -22,14 +23,21 @@ namespace BoulderDash2019
             Tiles[xIndex, yIndex] = tile;
         }
 
-        public void addDiamondCount()
-        {
-            diamonds_++;
-        }
-
         internal void addExit(Exit exit)
         {
             exit_ = exit;
+        }
+
+        internal void Draw()
+        {
+            for (int y = 0; y < Tiles.GetLength(1); y++)
+            {
+                for (int x = 0; x < Tiles.GetLength(0); x++)
+                {
+                    Tiles[x, y].Draw();
+                }
+                OutputCMD.Draw('\n');
+            }
         }
     }
 }

@@ -12,5 +12,15 @@ namespace BoulderDash2019
         {
 
         }
+
+        internal override void Draw()
+        {
+            OutputCMD.Draw('S');
+        }
+
+        internal override void Update(int frameUpdate)
+        {
+            
+        }
     }
 }

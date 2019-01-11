@@ -12,5 +12,21 @@ namespace BoulderDash2019
         {
 
         }
+
+        internal override void Draw()
+        {
+            OutputCMD.Draw('B');
+        }
+
+        internal override bool Move(DirectionEnum directionEnum, int force)
+        {
+            
+
+        }
+
+        internal override void Update(int frameUpdate)
+        {
+            
+        }
     }
 }
