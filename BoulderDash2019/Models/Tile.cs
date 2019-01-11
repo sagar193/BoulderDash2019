@@ -92,17 +92,16 @@ namespace BoulderDash2019
             }
         }
 
-        internal void Draw()
+        internal char GetSymbol()
         {
             if (explosionCounter > 0)
             {
-                OutputCMD.Draw('O');
-                return;
+                return 'O';
             }
             if (Entity_ == null)
-                OutputCMD.Draw(' ');
+                return ' ';
             else
-                Entity_.Draw();
+                return Entity_.getSymbol();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace BoulderDash2019
         bool playing;
         public Rockford player { get; private set; }
         private static Game instance = null;
+        OutputCMD output;
 
         private Game()
         {
@@ -26,6 +27,8 @@ namespace BoulderDash2019
             currentLevel = 0;
             playing = true;
             player = new Rockford(levels[currentLevel].playerPosition);
+            output = new OutputCMD();
+            output.currentLevel = levels[currentLevel];
         }
 
         public static Game Instance
@@ -41,8 +44,8 @@ namespace BoulderDash2019
         public void startGame()
         {
             Thread draw = new Thread(new ThreadStart(drawGame));
-            draw.Start();
 
+            draw.Start();
             play();
         }
 
@@ -66,9 +69,6 @@ namespace BoulderDash2019
                     case ConsoleKey.DownArrow:
                         player.Move(DirectionEnum.Down);
                         break;
-                    case ConsoleKey.E:
-                        player.Explode(2);
-                        break;
                     default:
 
                         break;
@@ -81,10 +81,7 @@ namespace BoulderDash2019
         {
             while (playing)
             {
-                OutputCMD.ClearScreen();
-                OutputCMD.DrawScore(player.score);
-                OutputCMD.DrawWhiteSpace();
-                levels[currentLevel].Draw();
+                output.Draw();
                 Thread.Sleep(300);
             }
         }

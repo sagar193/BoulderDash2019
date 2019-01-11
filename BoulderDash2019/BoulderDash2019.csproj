@@ -60,7 +60,6 @@
     <Compile Include="Game.cs" />
     <Compile Include="Models\Level.cs" />
     <Compile Include="LevelData.cs" />
-    <Compile Include="Map.cs" />
     <Compile Include="MapLoader.cs" />
     <Compile Include="OutputCMD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

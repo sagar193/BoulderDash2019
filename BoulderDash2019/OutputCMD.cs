@@ -7,29 +7,47 @@ using System.Diagnostics;
 
 namespace BoulderDash2019
 {
-    static class OutputCMD
+    public class OutputCMD
     {
-        static public void Draw(char c)
+        internal Level currentLevel { get; set; }
+
+        public OutputCMD()
         {
-            Console.Write(c);
+
         }
 
-        static public void ClearScreen()
+        public void Draw()
+        {
+            ClearScreen();
+            DrawScore(Game.Instance.player.score);
+            DrawWhiteSpace();
+            DrawTimeLeft((int)currentLevel.getTimeleft());
+            for (int y = 0; y < currentLevel.Tiles.GetLength(1); y++)
+            {
+                for (int x = 0; x < currentLevel.Tiles.GetLength(0); x++)
+                {
+                    Console.Write(currentLevel.Tiles[x, y].GetSymbol());
+                }
+                Console.Write('\n');
+            }
+        }
+
+        public void ClearScreen()
         {
             Console.Clear();
         }
 
-        static public void DrawScore(int score)
+        public void DrawScore(int score)
         {
             Console.Write("Score: " + score);
         }
 
-        static public void DrawWhiteSpace()
+        public void DrawWhiteSpace()
         {
             Console.Write("\t\t");
         }
 
-        static public void DrawTimeLeft(int time)
+        public void DrawTimeLeft(int time)
         {
             Console.Write("Time left: " + time +"\n");
         }

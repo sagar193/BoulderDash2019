@@ -15,9 +15,9 @@ namespace BoulderDash2019
             open = false;
         }
 
-        internal override void Draw()
+        internal override char getSymbol()
         {
-            OutputCMD.Draw('E');
+            return 'E';
         }
 
         internal override bool MoveOn(DirectionEnum directionEnum, ForceEnum force)

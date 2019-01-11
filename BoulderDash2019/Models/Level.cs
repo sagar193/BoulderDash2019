@@ -36,19 +36,6 @@ namespace BoulderDash2019
         {
             exit_ = exit;
         }
-
-        internal void Draw()
-        {
-            OutputCMD.DrawTimeLeft((int)getTimeleft());
-            for (int y = 0; y < Tiles.GetLength(1); y++)
-            {
-                for (int x = 0; x < Tiles.GetLength(0); x++)
-                {
-                    Tiles[x, y].Draw();
-                }
-                OutputCMD.Draw('\n');
-            }
-        }
         
         public void startTimer()
         {

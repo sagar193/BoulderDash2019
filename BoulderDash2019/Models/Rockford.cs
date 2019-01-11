@@ -17,9 +17,9 @@ namespace BoulderDash2019
             score = 0;
         }
 
-        internal override void Draw()
+        internal override char getSymbol()
         {
-            OutputCMD.Draw('R');
+            return 'R';
         }
 
         internal override void Update(int frameUpdate)

@@ -18,7 +18,7 @@ namespace BoulderDash2019
             tile.Entity_ = this;
         }
 
-        abstract internal void Draw();
+        abstract internal char getSymbol();
 
         abstract internal void Update(int frameUpdate);
 
