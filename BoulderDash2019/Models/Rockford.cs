@@ -47,7 +47,7 @@ namespace BoulderDash2019
                     tile_.Explode(2);
                     tile_ = null;
                     return true;
-                case ForceEnum.Gravity:
+                case ForceEnum.FallingObject:
                     alive = false;
                     tile_.Explode(2);
                     tile_ = null;
@@ -64,14 +64,9 @@ namespace BoulderDash2019
 
         internal override bool Explode()
         {
-            //tile_ = null;
+            tile_ = null;
             alive = false;
             return false;
-        }
-
-        internal void Explode(int v)
-        {
-            tile_.Explode(1);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace BoulderDash2019.Enums
         FireflyPush,
         PlayerPush,
         playerPushExtend,
-        Gravity
+        FallingObject,
+        StationaryObject
     }
 }
