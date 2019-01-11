@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019
 {
-    public class Diamond : Entity
+    public class Diamond : GravitySensitiveEntity
     {
         public Diamond(ref Tile tile) : base(ref tile)
         {
@@ -25,9 +25,6 @@ namespace BoulderDash2019
             {
                 case ForceEnum.PlayerPush:
                     Game.Instance.player.addScore(100);
-                    tile_ = null;
-                    return true;
-                case ForceEnum.Explosion:
                     tile_ = null;
                     return true;
                 default:

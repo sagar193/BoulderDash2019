@@ -10,6 +10,8 @@ namespace BoulderDash2019
     public class Rockford : Entity
     {
         internal int score { get; private set; }
+        internal bool alive { get; set; }
+
         public Rockford(Tile tile) : base(ref tile)
         {
             score = 0;
@@ -42,6 +44,12 @@ namespace BoulderDash2019
         internal void addScore(int addScore)
         {
             score += addScore;
+        }
+        internal override bool Explode()
+        {
+            tile_ = null;
+            alive = false;
+            return true;
         }
     }
 }

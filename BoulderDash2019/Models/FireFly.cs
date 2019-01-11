@@ -21,12 +21,29 @@ namespace BoulderDash2019
 
         internal override bool MoveOn(DirectionEnum directionEnum, ForceEnum force)
         {
-            throw new NotImplementedException();
+            switch (force)
+            {
+                case ForceEnum.Gravity:
+                    tile_.Explode(2);
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         internal override void Update(int frameUpdate)
         {
-            
+            if (lastFrameUpdated_ == frameUpdate)
+                return;
+            else
+                lastFrameUpdated_ = frameUpdate;
+
+        }
+
+        internal override bool Explode()
+        {
+            tile_ = null;
+            return true;
         }
     }
 }

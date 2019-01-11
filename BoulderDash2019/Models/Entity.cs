@@ -11,7 +11,6 @@ namespace BoulderDash2019
     {
         internal Tile tile_;
         protected int lastFrameUpdated_;
-        protected bool exploding;
 
         public Entity(ref Tile tile)
         {
@@ -24,6 +23,8 @@ namespace BoulderDash2019
         abstract internal void Update(int frameUpdate);
 
         abstract internal bool MoveOn(DirectionEnum directionEnum, ForceEnum force);
+
+        abstract internal bool Explode();
         
     }
 }

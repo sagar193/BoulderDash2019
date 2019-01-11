@@ -26,9 +26,6 @@ namespace BoulderDash2019
                 case ForceEnum.PlayerPush:
                     tile_ = null;
                     return true;
-                case ForceEnum.Explosion:
-                    tile_ = null;
-                    return true;
                 default:
                     return false;
             }
@@ -36,7 +33,12 @@ namespace BoulderDash2019
 
         internal override void Update(int frameUpdate)
         {
-            
+
+        }
+        internal override bool Explode()
+        {
+            tile_ = null;
+            return true;
         }
     }
 }

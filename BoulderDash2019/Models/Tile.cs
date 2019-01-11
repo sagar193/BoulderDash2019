@@ -27,6 +27,20 @@ namespace BoulderDash2019
             neighbours.Add(direction, tile);
         }
 
+        internal void Explode(int v)
+        {
+            if (v > 0)
+            {
+                foreach (var neighbour in neighbours)
+                {
+                    neighbour.Value.Explode(v - 1);
+                }
+                if (Entity_ != null)
+                    Entity_.Explode();
+            }
+
+        }
+
         internal Tile MoveToNeighbour(DirectionEnum direction, Entity entity, ForceEnum force)
         {
             Tile successTile = neighbours[direction].MoveOn(direction, entity, force);

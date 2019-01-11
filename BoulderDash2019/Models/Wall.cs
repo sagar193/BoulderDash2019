@@ -28,5 +28,11 @@ namespace BoulderDash2019
         {
             throw new NotImplementedException();
         }
+
+        internal override bool Explode()
+        {
+            tile_ = null;
+            return true;
+        }
     }
 }

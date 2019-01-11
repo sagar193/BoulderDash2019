@@ -28,5 +28,10 @@ namespace BoulderDash2019
         {
             
         }
+        
+        internal override bool Explode()
+        {
+            return false;
+        }
     }
 }

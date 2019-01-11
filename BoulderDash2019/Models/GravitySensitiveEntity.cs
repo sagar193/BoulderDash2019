@@ -23,5 +23,11 @@ namespace BoulderDash2019
             }
             else return false;
         }
+
+        internal override bool Explode()
+        {
+            tile_ = null;
+            return true;
+        }
     }
 }
