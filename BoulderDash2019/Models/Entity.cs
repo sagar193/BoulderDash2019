@@ -22,7 +22,7 @@ namespace BoulderDash2019
 
         abstract internal void Update(int frameUpdate);
 
-        abstract internal bool Move(DirectionEnum directionEnum, int force);
+        abstract internal bool MoveOn(DirectionEnum directionEnum, int force);
         
     }
 }

@@ -28,7 +28,13 @@ namespace BoulderDash2019
 
         internal Tile MoveToNeighbour(DirectionEnum direction, Entity entity, int force)
         {
-            return neighbours[direction].MoveOn(direction, entity, force);
+            Tile successTile = neighbours[direction].MoveOn(direction, entity, force);
+            if (successTile != null)
+            {
+                Entity_ = null;
+                return successTile;
+            }
+            else return null;
         }
 
         internal Tile MoveOn(DirectionEnum direction, Entity entity, int force)
@@ -40,7 +46,7 @@ namespace BoulderDash2019
             }
             else
             {
-                if (Entity_.Move(direction, force))
+                if (Entity_.MoveOn(direction, force))
                 {
                     Entity_ = entity;
                     return this;

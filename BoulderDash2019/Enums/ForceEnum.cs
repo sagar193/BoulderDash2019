@@ -8,7 +8,8 @@ namespace BoulderDash2019.Enums
 {
     public enum forceEnum
     {
-        ActorPush,
+        FireflyPush,
+        PlayerPush,
         Gravity,
         Explosion
     }

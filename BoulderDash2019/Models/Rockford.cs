@@ -25,7 +25,16 @@ namespace BoulderDash2019
 
         internal void Move(DirectionEnum direction)
         {
-            //tile_.Move()
+            Tile newPosition = tile_.MoveToNeighbour(direction, this, 2);
+            if (newPosition != null)
+            {
+                tile_ = newPosition;
+            }
+        }
+
+        internal override bool MoveOn(DirectionEnum directionEnum, int force)
+        {
+            throw new NotImplementedException();
         }
     }
 }

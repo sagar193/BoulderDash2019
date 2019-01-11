@@ -43,6 +43,16 @@ namespace BoulderDash2019
                 switch (key.Key)
                 {
                     case ConsoleKey.LeftArrow:
+                        player.Move(DirectionEnum.Left);
+                        break;
+                    case ConsoleKey.RightArrow:
+                        player.Move(DirectionEnum.Right);
+                        break;
+                    case ConsoleKey.UpArrow:
+                        player.Move(DirectionEnum.Up);
+                        break;
+                    case ConsoleKey.DownArrow:
+                        player.Move(DirectionEnum.Down);
                         break;
                     default:
 

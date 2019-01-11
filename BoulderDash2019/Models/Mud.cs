@@ -18,6 +18,17 @@ namespace BoulderDash2019
             OutputCMD.Draw('▒');
         }
 
+        internal override bool MoveOn(DirectionEnum directionEnum, int force)
+        {
+            if (force > 1)
+            {
+                tile_ = null;
+                return true;
+            }
+            else
+                return false;
+        }
+
         internal override void Update(int frameUpdate)
         {
             
