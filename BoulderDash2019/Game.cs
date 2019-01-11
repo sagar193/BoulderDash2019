@@ -11,10 +11,11 @@ namespace BoulderDash2019
     {
         Level[] levels;
         int currentLevel;
-        bool playing;
-        public Rockford player { get; private set; }
+        public bool Running { get; set; }
+        internal Rockford player { get; private set; }
         private static Game instance = null;
         OutputCMD output;
+        InputCMD input;
 
         private Game()
         {
@@ -25,9 +26,11 @@ namespace BoulderDash2019
             levels[2] = mapLoader.createLevel(LevelData.Level3);
 
             currentLevel = 0;
-            playing = true;
-            player = new Rockford(levels[currentLevel].playerPosition);
+            Running = true;
             output = new OutputCMD();
+            input = new InputCMD();
+            
+            player = new Rockford(levels[currentLevel].playerPosition);
             output.currentLevel = levels[currentLevel];
         }
 
@@ -44,42 +47,34 @@ namespace BoulderDash2019
         public void startGame()
         {
             Thread draw = new Thread(new ThreadStart(drawGame));
-
+            Thread catchInput = new Thread(new ThreadStart(input.grabInput));
             draw.Start();
+            catchInput.Start();
+
             play();
         }
 
         public void play()
         {
             levels[currentLevel].startTimer();
-            while (playing)
-            {
-                var key = Console.ReadKey();
-                switch (key.Key)
-                {
-                    case ConsoleKey.LeftArrow:
-                        player.Move(DirectionEnum.Left);
-                        break;
-                    case ConsoleKey.RightArrow:
-                        player.Move(DirectionEnum.Right);
-                        break;
-                    case ConsoleKey.UpArrow:
-                        player.Move(DirectionEnum.Up);
-                        break;
-                    case ConsoleKey.DownArrow:
-                        player.Move(DirectionEnum.Down);
-                        break;
-                    default:
 
-                        break;
-                }
+            while (Running)
+            {
+                Thread.Sleep(1000);
             }
+
             levels[currentLevel].stopTimer();
+        }
+
+        public void nextLevel()
+        {
+            currentLevel++;
+            output.currentLevel = levels[currentLevel];
         }
 
         public void drawGame()
         {
-            while (playing)
+            while (Running)
             {
                 output.Draw();
                 Thread.Sleep(300);
