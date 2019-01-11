@@ -7,14 +7,15 @@ using System.Threading;
 
 namespace BoulderDash2019
 {
-    class Game
+    public sealed class Game
     {
         Level[] levels;
         int currentLevel;
         bool playing;
-        Rockford player;
+        public Rockford player { get; private set; }
+        private static Game instance = null;
 
-        public Game()
+        private Game()
         {
             levels = new Level[3];
             MapLoader mapLoader = new MapLoader();
@@ -27,6 +28,16 @@ namespace BoulderDash2019
             player = new Rockford(levels[currentLevel].playerPosition);
         }
 
+        public static Game Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new Game();
+                return instance;
+            }
+        }
+
         public void startGame()
         {
             Thread draw = new Thread(new ThreadStart(drawGame));
@@ -37,6 +48,7 @@ namespace BoulderDash2019
 
         public void play()
         {
+            levels[currentLevel].startTimer();
             while (playing)
             {
                 var key = Console.ReadKey();
@@ -59,6 +71,7 @@ namespace BoulderDash2019
                         break;
                 }
             }
+            levels[currentLevel].stopTimer();
         }
 
         public void drawGame()
@@ -66,11 +79,11 @@ namespace BoulderDash2019
             while (playing)
             {
                 OutputCMD.ClearScreen();
+                OutputCMD.DrawScore(player.score);
+                OutputCMD.DrawWhiteSpace();
                 levels[currentLevel].Draw();
                 Thread.Sleep(300);
             }
         }
-
-
     }
 }

@@ -21,7 +21,18 @@ namespace BoulderDash2019
 
         internal override bool MoveOn(DirectionEnum directionEnum, ForceEnum force)
         {
-            throw new NotImplementedException();
+            switch (force)
+            {
+                case ForceEnum.PlayerPush:
+                    Game.Instance.player.addScore(100);
+                    tile_ = null;
+                    return true;
+                case ForceEnum.Explosion:
+                    tile_ = null;
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         internal override void Update(int frameUpdate)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace BoulderDash2019
 {
@@ -13,9 +14,17 @@ namespace BoulderDash2019
         Exit exit_;
         internal Tile playerPosition { get; set; }
 
+        ///timers
+        int levelTime;
+        System.Timers.Timer timer;
+        private DateTime startTime;
+        private DateTime stopTime;
+
         public Level(int width, int height)
         {
             Tiles = new Tile[width, height];
+            timer = new System.Timers.Timer();
+            levelTime = 90;
         }
 
         public void addTile(int xIndex, int yIndex, Tile tile)
@@ -30,6 +39,7 @@ namespace BoulderDash2019
 
         internal void Draw()
         {
+            OutputCMD.DrawTimeLeft((int)getTimeleft());
             for (int y = 0; y < Tiles.GetLength(1); y++)
             {
                 for (int x = 0; x < Tiles.GetLength(0); x++)
@@ -38,6 +48,29 @@ namespace BoulderDash2019
                 }
                 OutputCMD.Draw('\n');
             }
+        }
+        
+        public void startTimer()
+        {
+            timer.Start();
+
+            if (startTime == null)
+                startTime = DateTime.Now;
+            else
+                startTime += (DateTime.Now - stopTime);
+        }
+
+        public void stopTimer()
+        {
+            timer.Stop();
+            stopTime = DateTime.Now;
+        }
+
+        public double getTimeleft()
+        {
+            double timeElapsed = (startTime - DateTime.Now).TotalSeconds;
+            double timeLeft = levelTime + timeElapsed;
+            return levelTime + timeElapsed;
         }
     }
 }

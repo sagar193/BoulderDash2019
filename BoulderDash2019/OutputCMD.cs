@@ -18,5 +18,20 @@ namespace BoulderDash2019
         {
             Console.Clear();
         }
+
+        static public void DrawScore(int score)
+        {
+            Console.Write("Score: " + score);
+        }
+
+        static public void DrawWhiteSpace()
+        {
+            Console.Write("\t\t");
+        }
+
+        static public void DrawTimeLeft(int time)
+        {
+            Console.Write("Time left: " + time +"\n");
+        }
     }
 }

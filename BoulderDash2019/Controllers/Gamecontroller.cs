@@ -11,9 +11,8 @@ namespace BoulderDash2019
         static void Main(string[] args)
         {
             Console.WriteLine("test");
-
-            Game game = new Game();
-            game.startGame();
+            
+            Game.Instance.startGame();
         }
     }
 }
