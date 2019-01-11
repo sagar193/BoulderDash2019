@@ -9,7 +9,7 @@ namespace BoulderDash2019
 {
     public class Rockford : Entity
     {
-        public Rockford(ref Tile tile) : base(ref tile)
+        public Rockford(Tile tile) : base(ref tile)
         {
 
         }
@@ -26,7 +26,7 @@ namespace BoulderDash2019
 
         internal void Move(DirectionEnum direction)
         {
-            Tile newPosition = tile_.MoveToNeighbour(direction, this, 2);
+            Tile newPosition = tile_.MoveToNeighbour(direction, this, ForceEnum.PlayerPush);
             if (newPosition != null)
             {
                 tile_ = newPosition;

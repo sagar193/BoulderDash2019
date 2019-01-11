@@ -54,8 +54,7 @@ namespace BoulderDash2019
             switch (c)
             {
                 case 'R':
-                    Rockford rockford = new Rockford(ref tile);
-                    level.playerPosition = rockford;
+                    level.playerPosition = tile;
                     break;
                 case 'B':
                     Boulder boulder = new Boulder(ref tile);

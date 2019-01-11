@@ -52,6 +52,7 @@
     <Compile Include="Enums\EntityTypesEnum.cs" />
     <Compile Include="Models\Exit.cs" />
     <Compile Include="Models\FireFly.cs" />
+    <Compile Include="Models\GravitySensitiveEntity.cs" />
     <Compile Include="Models\Mud.cs" />
     <Compile Include="Models\Rockford.cs" />
     <Compile Include="Models\SteelWall.cs" />

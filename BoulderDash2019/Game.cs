@@ -24,7 +24,7 @@ namespace BoulderDash2019
 
             currentLevel = 0;
             playing = true;
-            player = new Rockford(ref levels[currentLevel].playerPosition.tile_);
+            player = new Rockford(levels[currentLevel].playerPosition);
         }
 
         public void startGame()

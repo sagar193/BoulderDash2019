@@ -23,13 +23,9 @@ namespace BoulderDash2019
         {
             switch (force)
             {
-                case ForceEnum.FireflyPush:
-                    return false;
                 case ForceEnum.PlayerPush:
                     tile_ = null;
                     return true;
-                case ForceEnum.Gravity:
-                    return false;
                 case ForceEnum.Explosion:
                     tile_ = null;
                     return true;

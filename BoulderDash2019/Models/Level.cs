@@ -11,7 +11,7 @@ namespace BoulderDash2019
     {
         internal Tile[,] Tiles { get; set; }
         Exit exit_;
-        internal Rockford playerPosition { get; set; }
+        internal Tile playerPosition { get; set; }
 
         public Level(int width, int height)
         {

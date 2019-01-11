@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019
 {
-    public class Boulder : Entity
+    public class Boulder : GravitySensitiveEntity
     {
         public Boulder(ref Tile tile) : base(ref tile)
         {
@@ -21,8 +21,19 @@ namespace BoulderDash2019
 
         internal override bool MoveOn(DirectionEnum directionEnum, ForceEnum force)
         {
-
-            throw new NotImplementedException();
+            switch (force)
+            {
+                case ForceEnum.PlayerPush:
+                    if (directionEnum == DirectionEnum.Up)
+                        return false;
+                    else
+                        return move(directionEnum);
+                case ForceEnum.Explosion:
+                    tile_ = null;
+                    return true;
+                default:
+                    return false;
+            }
         }
 
         internal override void Update(int frameUpdate)
