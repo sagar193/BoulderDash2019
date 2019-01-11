@@ -35,9 +35,9 @@ namespace BoulderDash2019
                 {
                     neighbour.Value.Explode(v - 1);
                 }
-                if (Entity_ != null)
-                    Entity_.Explode();
             }
+            if (Entity_ != null)
+                Entity_.Explode();
 
         }
 
