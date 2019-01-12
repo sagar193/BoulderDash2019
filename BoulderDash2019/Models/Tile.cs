@@ -45,7 +45,6 @@ namespace BoulderDash2019
                 if (destroyed)
                     Entity_ = null;
             }
-
         }
 
         internal Tile MoveToNeighbour(DirectionEnum direction, Entity entity, ForceEnum force)
@@ -100,7 +99,11 @@ namespace BoulderDash2019
             {
                 explosionCounter--;
                 if (Entity_ != null)
-                    Entity_.Explode();
+                {
+                    bool destroyed = Entity_.Explode();
+                    if (destroyed)
+                        Entity_ = null;
+                }
             }
             if(Entity_ != null)
             {

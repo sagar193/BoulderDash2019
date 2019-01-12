@@ -38,26 +38,36 @@ namespace BoulderDash2019
 
         internal override void Update(int frameUpdate)
         {
+            if (tile_ == null)
+                return;
             if (!shouldUpdate(frameUpdate))
                 return;
-            Tile newPosition = tile_.MoveToNeighbour(DirectionEnum.Down, this, ForceEnum.StationaryObject);
+            Tile newPosition;
+            if (falling == false)
+                newPosition = tile_.MoveToNeighbour(DirectionEnum.Down, this, ForceEnum.StationaryObject);
+            else
+                newPosition = tile_.MoveToNeighbour(DirectionEnum.Down, this, ForceEnum.FallingObject);
             if (newPosition != null)
             {
                 tile_ = newPosition;
+                falling = true;
                 return;
             }
             newPosition = tile_.SlideNeighbour(DirectionEnum.Left, this, ForceEnum.StationaryObject);
             if (newPosition != null)
             {
                 tile_ = newPosition;
+                falling = true;
                 return;
             }
             newPosition = tile_.SlideNeighbour(DirectionEnum.Right, this, ForceEnum.StationaryObject);
             if (newPosition != null)
             {
                 tile_ = newPosition;
+                falling = true;
                 return;
             }
+            falling = false;
         }
     }
 }

@@ -66,7 +66,7 @@ namespace BoulderDash2019
                     return true;
                 case ForceEnum.FallingObject:
                     alive = false;
-                    tile_.Explode(2);
+                    tile_.Explode(1);
                     tile_ = null;
                     return true;
                 default:
