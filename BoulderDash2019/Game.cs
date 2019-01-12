@@ -78,6 +78,8 @@ namespace BoulderDash2019
         public void nextLevel()
         {
             currentLevel++;
+            player.tile_ = levels[currentLevel].playerPosition;
+            levels[currentLevel].playerPosition.Entity_ = player;
             output.currentLevel = levels[currentLevel];
         }
 
@@ -86,7 +88,7 @@ namespace BoulderDash2019
             while (Running)
             {
                 output.Draw();
-                Thread.Sleep(300);
+                Thread.Sleep(100);
             }
         }
     }

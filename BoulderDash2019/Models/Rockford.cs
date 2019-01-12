@@ -41,6 +41,9 @@ namespace BoulderDash2019
                 case ConsoleKey.DownArrow:
                     Move(DirectionEnum.Down);
                     break;
+                case ConsoleKey.Add:
+                    Game.Instance.nextLevel();
+                    break;
             }
         }
 
