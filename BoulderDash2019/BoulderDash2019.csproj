@@ -46,7 +46,8 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Enums\DirectionEnum.cs" />
     <Compile Include="Enums\ForceEnum.cs" />
-    <Compile Include="InputCMD.cs" />
+    <Compile Include="Models\StationaryEntity.cs" />
+    <Compile Include="View\InputCMD.cs" />
     <Compile Include="Models\Entity.cs" />
     <Compile Include="Models\Boulder.cs" />
     <Compile Include="Models\Diamond.cs" />

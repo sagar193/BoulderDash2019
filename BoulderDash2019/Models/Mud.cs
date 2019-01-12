@@ -1,4 +1,5 @@
 ﻿using BoulderDash2019.Enums;
+using BoulderDash2019.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019
 {
-    public class Mud : Entity
+    public class Mud : StationaryEntity
     {
         public Mud(ref Tile tile) : base(ref tile)
         {
@@ -30,11 +31,7 @@ namespace BoulderDash2019
                     return false;
             }
         }
-
-        internal override void Update(int frameUpdate)
-        {
-
-        }
+        
         internal override bool Explode()
         {
             tile_ = null;

@@ -15,7 +15,7 @@ namespace BoulderDash2019
         internal Rockford player { get; private set; }
         private static Game instance = null;
         OutputCMD output;
-        InputCMD input;
+        internal InputCMD input { get; private set; }
 
         private Game()
         {
@@ -47,7 +47,7 @@ namespace BoulderDash2019
         public void startGame()
         {
             Thread draw = new Thread(new ThreadStart(drawGame));
-            Thread catchInput = new Thread(new ThreadStart(input.grabInput));
+            Thread catchInput = new Thread(new ThreadStart(input.catchInput));
             draw.Start();
             catchInput.Start();
 
@@ -57,10 +57,19 @@ namespace BoulderDash2019
         public void play()
         {
             levels[currentLevel].startTimer();
+            int update = 0;
 
-            while (Running)
+            while (currentLevel >= 0 && currentLevel < levels.Length)
             {
-                Thread.Sleep(1000);
+                for (int y = 0; y < levels[currentLevel].Tiles.GetLength(1); y++)
+                {
+                    for (int x = 0; x < levels[currentLevel].Tiles.GetLength(0); x++)
+                    {
+                        levels[currentLevel].Tiles[x, y].Update(update);
+                    }
+                }
+                update++;
+                Thread.Sleep(200);
             }
 
             levels[currentLevel].stopTimer();

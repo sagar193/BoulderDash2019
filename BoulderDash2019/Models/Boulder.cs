@@ -32,10 +32,5 @@ namespace BoulderDash2019
                     return false;
             }
         }
-
-        internal override void Update(int frameUpdate)
-        {
-            
-        }
     }
 }

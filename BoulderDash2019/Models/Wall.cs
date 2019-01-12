@@ -1,4 +1,5 @@
 ﻿using BoulderDash2019.Enums;
+using BoulderDash2019.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BoulderDash2019
 {
-    public class Wall : Entity
+    public class Wall : StationaryEntity
     {
         public Wall(ref Tile tile) : base(ref tile)
         {
@@ -22,11 +23,6 @@ namespace BoulderDash2019
         internal override bool MoveOn(DirectionEnum directionEnum, ForceEnum force)
         {
             return false;
-        }
-
-        internal override void Update(int frameUpdate)
-        {
-            throw new NotImplementedException();
         }
 
         internal override bool Explode()

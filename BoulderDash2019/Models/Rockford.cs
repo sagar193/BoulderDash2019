@@ -24,7 +24,24 @@ namespace BoulderDash2019
 
         internal override void Update(int frameUpdate)
         {
-            
+            var input = Game.Instance.input.grabInputFromQueue();
+            if (input == null)
+                return;
+            switch (input.Key)
+            {
+                case ConsoleKey.LeftArrow:
+                    Move(DirectionEnum.Left);
+                    break;
+                case ConsoleKey.RightArrow:
+                    Move(DirectionEnum.Right);
+                    break;
+                case ConsoleKey.UpArrow:
+                    Move(DirectionEnum.Up);
+                    break;
+                case ConsoleKey.DownArrow:
+                    Move(DirectionEnum.Down);
+                    break;
+            }
         }
 
         internal void Move(DirectionEnum direction)

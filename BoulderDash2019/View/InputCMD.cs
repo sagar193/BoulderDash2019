@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BoulderDash2019
 {
@@ -16,7 +12,7 @@ namespace BoulderDash2019
             inputQueue = new ConcurrentQueue<ConsoleKeyInfo>();
         }
 
-        internal void grabInput()
+        internal void catchInput()
         {
             while (Game.Instance.Running)
             {
@@ -32,6 +28,17 @@ namespace BoulderDash2019
 
                 }
             }
+        }
+
+        internal ConsoleKeyInfo grabInputFromQueue()
+        {
+            ConsoleKeyInfo input;
+
+            lock(inputQueue)
+            {
+                inputQueue.TryDequeue(out input);
+            }
+            return input;
         }
 
     }
