@@ -60,6 +60,7 @@ namespace BoulderDash2019
                     Boulder boulder = new Boulder(ref tile);
                     break;
                 case 'D':
+                    level.diamonds++;
                     Diamond diamond = new Diamond(ref tile);
                     break;
                 case 'F':

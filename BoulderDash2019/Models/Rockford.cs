@@ -15,6 +15,8 @@ namespace BoulderDash2019
         public Rockford(Tile tile) : base(ref tile)
         {
             score = 0;
+            alive = true;
+            updateDelay = 3;
         }
 
         internal override char getSymbol()
@@ -24,6 +26,8 @@ namespace BoulderDash2019
 
         internal override void Update(int frameUpdate)
         {
+            if (!shouldUpdate(frameUpdate))
+                return;
             var input = Game.Instance.input.grabInputFromQueue();
             if (input == null)
                 return;

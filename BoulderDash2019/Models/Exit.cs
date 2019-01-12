@@ -43,5 +43,10 @@ namespace BoulderDash2019
         {
             return false;
         }
+
+        internal void Activate()
+        {
+            open = true;
+        }
     }
 }

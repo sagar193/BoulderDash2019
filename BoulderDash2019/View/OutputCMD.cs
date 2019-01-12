@@ -21,6 +21,8 @@ namespace BoulderDash2019
             ClearScreen();
             DrawScore(Game.Instance.player.score);
             DrawWhiteSpace();
+            DrawDiamondsLeft();
+            DrawWhiteSpace();
             DrawTimeLeft((int)currentLevel.getTimeleft());
             for (int y = 0; y < currentLevel.Tiles.GetLength(1); y++)
             {
@@ -42,14 +44,27 @@ namespace BoulderDash2019
             Console.Write("Score: " + score);
         }
 
+        public void DrawDiamondsLeft()
+        {
+            Console.Write("Diamonds left: " + currentLevel.diamonds);
+        }
+
         public void DrawWhiteSpace()
         {
-            Console.Write("\t\t");
+            Console.Write("\t");
         }
 
         public void DrawTimeLeft(int time)
         {
             Console.Write("Time left: " + time +"\n");
+        }
+
+        internal void FinalScreen(int score)
+        {
+            ClearScreen();
+            Console.WriteLine("\n Game over! Final score =" + score);
+            Console.WriteLine("Press any key to exit the game");
+
         }
     }
 }

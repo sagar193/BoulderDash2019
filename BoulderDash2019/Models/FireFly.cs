@@ -14,7 +14,7 @@ namespace BoulderDash2019
         public FireFly(ref Tile tile) : base(ref tile)
         {
             lastMovedDirection = 0;
-            updateDelay = 2;
+            updateDelay = 3;
             lastMovedDirection = DirectionEnum.Up;
         }
 

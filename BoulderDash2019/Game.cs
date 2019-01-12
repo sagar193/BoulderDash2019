@@ -52,14 +52,18 @@ namespace BoulderDash2019
             catchInput.Start();
 
             play();
+            draw.Join();
+            output.FinalScreen(player.score);
+            catchInput.Join();
         }
 
         public void play()
         {
-            levels[currentLevel].startTimer();
             int update = 0;
+            levels[currentLevel].startTimer();
 
-            while (currentLevel >= 0 && currentLevel < levels.Length)
+
+            while (currentLevel >= 0 && currentLevel < levels.Length && player.alive)
             {
                 for (int y = 0; y < levels[currentLevel].Tiles.GetLength(1); y++)
                 {
@@ -69,18 +73,32 @@ namespace BoulderDash2019
                     }
                 }
                 update++;
-                Thread.Sleep(200);
+                if (levels[currentLevel].done())
+                    nextLevel();
+                Thread.Sleep(100);
             }
-
-            levels[currentLevel].stopTimer();
+            Running = false;
         }
 
         public void nextLevel()
         {
+            if (currentLevel >= levels.Length - 1)
+                return;
+            levels[currentLevel].stopTimer();
+            player.addScore((int)levels[currentLevel].getTimeleft()*10);
             currentLevel++;
+            levels[currentLevel].startTimer();
+
             player.tile_ = levels[currentLevel].playerPosition;
             levels[currentLevel].playerPosition.Entity_ = player;
             output.currentLevel = levels[currentLevel];
+        }
+
+        public void removeDiamondCount()
+        {
+            levels[currentLevel].diamonds--;
+            if (levels[currentLevel].diamonds == 0)
+                levels[currentLevel].activateExit();
         }
 
         public void drawGame()

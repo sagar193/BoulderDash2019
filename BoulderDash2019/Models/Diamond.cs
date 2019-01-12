@@ -25,6 +25,7 @@ namespace BoulderDash2019
             {
                 case ForceEnum.PlayerPush:
                     Game.Instance.player.addScore(100);
+                    Game.Instance.removeDiamondCount();
                     tile_ = null;
                     return true;
                 default:

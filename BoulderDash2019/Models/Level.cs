@@ -13,6 +13,7 @@ namespace BoulderDash2019
         internal Tile[,] Tiles { get; set; }
         Exit exit_;
         internal Tile playerPosition { get; set; }
+        public int diamonds { get; set; }
 
         ///timers
         int levelTime;
@@ -58,6 +59,20 @@ namespace BoulderDash2019
             double timeElapsed = (startTime - DateTime.Now).TotalSeconds;
             double timeLeft = levelTime + timeElapsed;
             return levelTime + timeElapsed;
+        }
+
+        public void activateExit()
+        {
+            exit_.Activate();
+        }
+
+        public bool done()
+        {
+            if (exit_ == null)
+                return false;
+            if (exit_.tile_ == null)
+                return true;
+            else return false;
         }
     }
 }
