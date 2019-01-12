@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoulderDash2019.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -80,6 +81,12 @@ namespace BoulderDash2019
                 case 'E':
                     Exit exit = new Exit(ref tile);
                     level.addExit(exit);
+                    break;
+                case 'T':
+                    Tnt tnt = new Tnt(ref tile);
+                    break;
+                case 'H':
+                    Mud mud2 = new Mud(ref tile);
                     break;
             }
             return tile;

@@ -40,6 +40,12 @@ namespace BoulderDash2019
         {
             if (!shouldUpdate(frameUpdate))
                 return;
+            if (!fall())
+                stopFalling();
+        }
+
+        protected bool fall()
+        {
             Tile newPosition;
             if (falling == false)
                 newPosition = tile_.MoveToNeighbour(DirectionEnum.Down, this, ForceEnum.StationaryObject);
@@ -49,23 +55,34 @@ namespace BoulderDash2019
             {
                 tile_ = newPosition;
                 falling = true;
-                return;
+                return true;
             }
             newPosition = tile_.SlideNeighbour(DirectionEnum.Left, this, ForceEnum.StationaryObject);
             if (newPosition != null)
             {
                 tile_ = newPosition;
                 falling = true;
-                return;
+                return true;
             }
             newPosition = tile_.SlideNeighbour(DirectionEnum.Right, this, ForceEnum.StationaryObject);
             if (newPosition != null)
             {
                 tile_ = newPosition;
                 falling = true;
-                return;
+                return true;
             }
-            falling = false;
+            return false;
+        }
+
+        private void startFalling()
+        {
+            falling = true;
+        }
+
+        internal virtual void stopFalling()
+        {
+            if (falling == true)
+                falling = false;
         }
     }
 }
