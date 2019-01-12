@@ -38,8 +38,6 @@ namespace BoulderDash2019
 
         internal override void Update(int frameUpdate)
         {
-            if (tile_ == null)
-                return;
             if (!shouldUpdate(frameUpdate))
                 return;
             Tile newPosition;
