@@ -46,7 +46,6 @@ namespace BoulderDash2019.Models
             }
             hardness--;
             return false;
-
         }
     }
 }

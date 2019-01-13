@@ -61,7 +61,7 @@
     <Compile Include="Models\Rockford.cs" />
     <Compile Include="Models\SteelWall.cs" />
     <Compile Include="Models\Wall.cs" />
-    <Compile Include="Game.cs" />
+    <Compile Include="Controllers\Game.cs" />
     <Compile Include="Models\Level.cs" />
     <Compile Include="LevelData.cs" />
     <Compile Include="MapLoader.cs" />
