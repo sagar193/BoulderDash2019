@@ -86,7 +86,7 @@ namespace BoulderDash2019
                     Tnt tnt = new Tnt(ref tile);
                     break;
                 case 'H':
-                    Mud mud2 = new Mud(ref tile);
+                    HardenedMush mush = new HardenedMush(ref tile);
                     break;
             }
             return tile;
