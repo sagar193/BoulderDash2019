@@ -28,7 +28,7 @@ namespace BoulderDash2019
             switch (force)
             {
                 case ForceEnum.FallingObject:
-                    tile_.Explode(1);
+                    tile_.Explode(2);
                     return true;
                 default:
                     return false;

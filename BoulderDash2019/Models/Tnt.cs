@@ -55,7 +55,7 @@ namespace BoulderDash2019.Models
         internal override void stopFalling()
         {
             if (falling == true)
-                tile_.Explode(1);
+                tile_.Explode(2);
         }
     }
 }

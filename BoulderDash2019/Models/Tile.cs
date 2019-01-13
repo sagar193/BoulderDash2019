@@ -32,19 +32,45 @@ namespace BoulderDash2019
         internal void Explode(int v)
         {
             explosionCounter = 4;
-            if (v > 0)
+            if (v > 1)
             {
                 foreach (var neighbour in neighbours)
                 {
-                    neighbour.Value.Explode(v - 1);
+                    neighbour.Value.Explode(v - 1, neighbour.Key);
+
                 }
             }
+            Explode();
+        }
+
+        private void Explode()
+        {
             if (Entity_ != null)
             {
                 bool destroyed = Entity_.Explode();
                 if (destroyed)
                     Entity_ = null;
             }
+        }
+
+        private void Explode(int v, DirectionEnum direction)
+        {
+            explosionCounter = 4;
+            if (direction == DirectionEnum.Down || direction == DirectionEnum.Up)
+            {
+                if (neighbours.ContainsKey(DirectionEnum.Left))
+                    neighbours[DirectionEnum.Left].Explode(0);
+                if (neighbours.ContainsKey(DirectionEnum.Right))
+                    neighbours[DirectionEnum.Right].Explode(0);
+            }
+            if (direction == DirectionEnum.Left || direction == DirectionEnum.Right)
+            {
+                if (neighbours.ContainsKey(DirectionEnum.Up))
+                    neighbours[DirectionEnum.Up].Explode(0);
+                if (neighbours.ContainsKey(DirectionEnum.Down))
+                    neighbours[DirectionEnum.Down].Explode(0);
+            }
+            Explode();
         }
 
         internal Tile MoveToNeighbour(DirectionEnum direction, Entity entity, ForceEnum force)
@@ -98,12 +124,7 @@ namespace BoulderDash2019
             if (explosionCounter > 0)
             {
                 explosionCounter--;
-                if (Entity_ != null)
-                {
-                    bool destroyed = Entity_.Explode();
-                    if (destroyed)
-                        Entity_ = null;
-                }
+                Explode();
             }
             if(Entity_ != null)
             {

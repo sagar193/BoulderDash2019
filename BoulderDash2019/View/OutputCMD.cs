@@ -62,7 +62,7 @@ namespace BoulderDash2019
         internal void FinalScreen(int score)
         {
             ClearScreen();
-            Console.WriteLine("\n Game over! Final score =" + score);
+            Console.WriteLine("\n Game over! Final score = " + score);
             Console.WriteLine("Press any key to exit the game");
 
         }
